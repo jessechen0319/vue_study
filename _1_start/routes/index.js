@@ -14,4 +14,12 @@ router.get('/iffor', function(req, res, next) {
   res.render('ifelsefor', { title: 'jesse' });
 });
 
+router.get('/customerinput', function(req, res, next) {
+  res.render('customerInput', { title: 'jesse' });
+});
+
+router.get('/component', function(req, res, next) {
+  res.render('component', { title: 'jesse' });
+});
+
 module.exports = router;

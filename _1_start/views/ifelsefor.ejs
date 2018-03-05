@@ -15,17 +15,30 @@
             now you see me
         </div>
         <button v-on:click="showorhide">show me or hide me</button>
+        <ul>
+            <li v-for="name in names">
+                welcome {{name}}
+            </li>
+        </ul>
+        <button v-on:click="addName">add name</button>
     </div>
 </body>
 <script>
     let app = new Vue({
         el: "#app",
         data: {
-            showMe: true
+            showMe: true,
+            names: [
+                "jesse",
+                "steven"
+            ]
         },
         methods: {
             showorhide: function () {
                 this.showMe = !this.showMe;
+            },
+            addName: function(){
+                this.names.push("Mike");
             }
         }
     });

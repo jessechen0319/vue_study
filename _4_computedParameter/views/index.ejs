@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="age">
+    <p>I am {{age}} years old, and I am {{adult}}</p>
+    my name is {{fullName}}
+    <input type="button" value="change name" @click="changeName">
+  </div>
+</body>
+<script>
+
+
+  let defaultData = {
+    age: 10,
+    firstName: 'Foo',
+    lastName: 'Bar',
+    fullName: 'Foo Bar'
+  };
+
+  let methonsObject = {
+    changeName:  function(){
+      this.firstName = "jesse";
+      //this.lastName = "Chen";
+    }
+  };
+
+  let watchObject = {
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
+    }
+  };
+
+  let computedObject = {
+      adult: function(){
+        if(this.age >=18){
+          return "an adult";
+        } else {
+          return "not an adult";
+        }
+      }
+    };
+
+  let app = new Vue({
+    el: "#app",
+    data: defaultData,
+    computed: computedObject,
+    watch: watchObject,
+    methods: methonsObject
+  });
+</script>
+</html>

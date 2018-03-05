@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/js/vue.js"></script>
+  </head>
+  <body>
+    
+    <div id="app">
+      welcome to our system {{name}}
+
+      <input type="button" v-on:click="changeName" value="change name inner">
+      <input type="button" onclick="changeVueName()" value="change name outside">
+    </div>
+    
+  </body>
+  <script>
+    let defaultData = {
+      name: "unknown"
+    };
+
+    let app = new Vue({
+      el: "#app",
+      data: defaultData,
+      beforeUpdate: function(){
+        console.log("before update my element");
+      },
+      updated: function(){
+        console.log("updated my element");
+      },
+      methods:{
+        changeName: function(){
+          this.name = "Jesse";
+        }
+      }
+    });
+
+    function changeVueName(){
+      app.$data.name = "steven";
+    }
+  </script>
+</html>
