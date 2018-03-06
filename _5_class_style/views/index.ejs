@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-bind:class="{ red: isActive, 'green': hasError }">
+      object class
+    </div>
+    <div v-bind:class="[activeClass, errorClass]">
+      array class
+    </div>
+    <div v-bind:style="{fontSize: mySize + 'px'}">
+      style 
+      <input type="button" name="" id="" value="change font size" @click="changeButton">
+    </div>
+  </div>
+  <script>
+    let app_data = {
+      isActive: true,
+      hasError: false,
+      activeClass: 'red',
+      errorClass: 'green',
+      mySize: 20
+    };
+
+    let app_methods = {
+      changeButton: function(){
+        this.mySize = 2*this.mySize;
+      }
+    };
+
+    let app = new Vue({
+      el: "#app",
+      data: app_data,
+      methods: app_methods
+    });
+  </script>
+  <style>
+    .green{
+      color: aqua
+    }
+    .red{
+      background-color: red;
+    }
+    .blue{
+      border: 3px solid cornflowerblue;
+    }
+  </style>
+</body>
+</html>

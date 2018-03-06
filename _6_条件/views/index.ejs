@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if="condition === 0">
+      I am 0
+    </div>
+    <div v-else-if="condition === 1">
+      I am 1
+    </div>
+    <div v-else>
+      I am other
+    </div>
+    <input type="button" value="change value" @click="changeCondition">
+  </div>
+  <script>
+    let app_data = {
+      condition: 0
+    };
+
+    let app_methods = {
+      changeCondition: function () {
+        this.condition++;
+      }
+    };
+
+    let app = new Vue({
+      el: "#app",
+      data: app_data,
+      methods: app_methods
+    });
+  </script>
+</body>
+
+</html>
